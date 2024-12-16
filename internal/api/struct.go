@@ -13,7 +13,7 @@ type Match struct {
 	Score    string `json:"Score"`
 }
 
-func Api() {
+func Api_FootballSite() {
 	url := "https://api.football-data.org/v4/matches"
 	resp, err := http.Get(url)
 	if err != nil {
@@ -27,7 +27,6 @@ func Api() {
 	json.Unmarshal(body, &matches)
 
 	for _, match := range matches {
-		fmt.Println("%s vs %s Score: %s", match.HomeTeam, match.AwayTeam, match.Score)
-		fmt.Println("calisti")
+		fmt.Printf("%s vs %s Score: %s", match.HomeTeam, match.AwayTeam, match.Score)
 	}
 }
