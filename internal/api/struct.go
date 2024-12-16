@@ -28,5 +28,6 @@ func Api() {
 
 	for _, match := range matches {
 		fmt.Println("%s vs %s Score: %s", match.HomeTeam, match.AwayTeam, match.Score)
+		fmt.Println("calisti")
 	}
 }
