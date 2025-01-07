@@ -1,8 +1,7 @@
-package db
+package database
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/redis/go-redis/v9"
 )
@@ -16,15 +15,14 @@ func NewRedisClient(redisClient *redis.Client) *RedisClient {
 }
 
 func New(addr string) (*RedisClient, error) {
-	client := redis.NewClient(&redis.Options{
+	rdb := redis.NewClient(&redis.Options{
 		Addr: addr,
 	})
 
-	_, err := client.Ping(context.Background()).Result()
-	if err != nil {
-		fmt.Println("PING")
+	if err := rdb.Ping(context.Background()).Err(); err != nil {
 		return nil, err
 	}
-	rc := &RedisClient{Client: client}
-	return rc, err
+
+	return &RedisClient{Client: rdb}, nil
+
 }
