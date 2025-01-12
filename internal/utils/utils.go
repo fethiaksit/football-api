@@ -1,4 +1,4 @@
-package api
+package utils
 
 import (
 	"encoding/json"
@@ -9,12 +9,11 @@ type testWriter struct {
 	Wrt string `json:"write"`
 }
 
-func Test(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-
+func ResponseWriter(w http.ResponseWriter, wrt string) interface{} {
 	resp := testWriter{
-		Wrt: "test",
+		Wrt: wrt,
 	}
 	response, _ := json.Marshal(resp)
 	w.Write(response)
+	return response
 }
