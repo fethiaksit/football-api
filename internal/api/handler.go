@@ -10,6 +10,6 @@ func Handler() error {
 	if err != nil {
 		return err
 	}
-	http.HandleFunc("/test", rc.Signup)
-	return nil
+	http.HandleFunc("/test", rc.FetchLiveMatches)
+	return err
 }
