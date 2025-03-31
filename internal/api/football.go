@@ -47,7 +47,7 @@ func (api *RedisClient) FetchLiveMatches(w http.ResponseWriter, r *http.Request)
 }
 
 func (api *RedisClient) FetchSuperLigResults(w http.ResponseWriter, r *http.Request) {
-	url := "https://api.collectapi.com/sport/results?data.league=super-lig"
+	url := "https://api.collectapi.com/football/league?data.league=super-lig"
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
